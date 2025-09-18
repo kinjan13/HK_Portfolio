@@ -1,0 +1,51 @@
+.vertical-timeline span {
+  color: white;
+  font-family: "Courier Prime", monospace;
+}
+
+.vertical-timeline p {
+  color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element p {
+  color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element h3 {
+  color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element h4 {
+  color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element span {
+  color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element .vertical-timeline-element-date {
+  color: white;
+}
+
+.svg-inline--fa {
+  color: white;
+}
+
+.vertical-timeline-element {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.6s ease-out;
+}
+.vertical-timeline-element.vertical-timeline-element--right {
+  transform: translateX(-50px);
+}
+.vertical-timeline-element.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media screen and (max-width: 1170px) {
+  .vertical-timeline-element .vertical-timeline-element-date {
+    color: rgb(39, 40, 34);
+  }
+}/*# sourceMappingURL=Timeline.css.map */
