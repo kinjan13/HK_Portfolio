@@ -1,22 +1,38 @@
 .dark-mode .about-section {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(213, 84, 84, 0.2);
 }
 
 .about-section {
-    display: flex;
-    gap: 30px;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    padding: 0px 15%;
-    min-height: 700px;
-    background-image: url("../images/bg-dark.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0px 15%;
+  min-height: 700px;
+  position: relative; // important for pseudo-element
+  z-index: 1;
+  overflow: hidden;   // avoid scroll glitches
 }
 
+/* Background fix applied via ::before */
+.about-section::before {
+  content: "";
+  position: fixed; /* stays fixed on scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../images/bg-dark.png") no-repeat center center;
+  background-size: cover;
+  z-index: -1; /* push behind content */
+}
+
+/* Dark mode overlay */
+.dark-mode .about-section::before {
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: overlay;
+}
 .about-section .content {
     text-align: left;
     z-index: 2;

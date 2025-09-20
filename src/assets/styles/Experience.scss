@@ -1,0 +1,75 @@
+.experience-expand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   // centers all content horizontally
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: #0d1117;
+  color: #fff;
+
+  .title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .exp-card {
+    background: #1e2228;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    width: 80%;          // card width
+    max-width: 800px;    // max width for large screens
+    margin: 0 auto;      // center card horizontally
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+
+    .exp-header {
+      display: flex;
+      align-items: center;
+      padding: 1.2rem;
+      background: #272c34;
+      gap: 1rem;
+
+      .exp-logo {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .exp-text {
+        h3 {
+          margin: 0;
+          font-size: 1.2rem;
+        }
+        p {
+          margin: 0.2rem 0 0;
+          font-size: 1rem;
+          color: #bbb;
+        }
+      }
+    }
+
+    .exp-details {
+      max-height: 0;
+      opacity: 0;
+      padding: 0 1.2rem;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+    }
+
+    &.open {
+      .exp-details {
+        max-height: 200px;
+        opacity: 1;
+        padding: 1.2rem;
+      }
+    }
+  }
+}
