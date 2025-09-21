@@ -29,7 +29,6 @@ function App() {
       <FadeIn transitionDuration={700}>
         <Main />
         <Expertise />
-        {/* 👇 Moved Experience here, right after Expertise */}
         <Experience />
         <Timeline />
         <Project />

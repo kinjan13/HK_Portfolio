@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import '../assets/styles/Experience.scss';
 import logo1 from '../assets/images/logo1.jpg';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface ExpItem {
   id: number;
@@ -53,7 +55,7 @@ const Experience: React.FC = () => {
               </div>
             </div>
             <div className={`exp-arrow ${openId === exp.id ? 'rotate' : ''}`}>
-              ▼
+              <FontAwesomeIcon icon={faAngleUp} style={{ color: "#ffffff" }} />
             </div>
           </div>
           <div className="exp-details">
