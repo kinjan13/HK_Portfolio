@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import '../assets/styles/Experience.scss';
+import logo1 from '../assets/images/logo1.jpg';
 
 interface ExpItem {
   id: number;
@@ -12,53 +13,56 @@ interface ExpItem {
 const experienceData: ExpItem[] = [
   {
     id: 1,
-    company: "Example Co.",
-    logo: "/images/exampleco-logo.png",
-    position: "Senior Software Engineer",
-    description:
-      "Designed and built XYZ tool for ABC tasks. Managed disaster-recovery system for Kubernetes volumes. Led backend engineering team."
-  }
+    company: "Deloitte",
+    logo: logo1,
+    position: "Associate Analyst",
+    description: "Designed and implemented frontend features using React and TypeScript, collaborated with cross-functional teams, and improved app performance by 30%."
+  },
+  {
+    id: 2,
+    company: "Tech Solutions",
+    logo: "/images/techsolutions-logo.png",
+    position: "Frontend Developer",
+    description: "Worked on responsive web applications, integrated APIs, and enhanced UI/UX with animations and smooth interactions."
+  },
+  // Add more experiences here
 ];
 
-export default function Experience() {
-  const [open, setOpen] = useState(false);
-  const [lastScrollTop, setLastScrollTop] = useState(0);
+const Experience: React.FC = () => {
+  const [openId, setOpenId] = useState<number | null>(null);
 
-  // Toggle open/close on click
-  const toggleCard = () => setOpen(!open);
-
-  // Close card on scroll up
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop < lastScrollTop) setOpen(false);
-      setLastScrollTop(scrollTop);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollTop]);
-
-  const exp = experienceData[0];
+  const toggleOpen = (id: number) => {
+    setOpenId(openId === id ? null : id);
+  };
 
   return (
-    <section className="experience-expand" id="experience">
+    <section className="experience-expand">
       <h2 className="title">Experience</h2>
-      <div
-        className={`exp-card ${open ? "open" : ""}`}
-        onClick={toggleCard}
-      >
-        <div className="exp-header">
-          <img src={exp.logo} alt={`${exp.company} logo`} className="exp-logo" />
-          <div className="exp-text">
-            <h3>{exp.company}</h3>
-            <p>{exp.position}</p>
+      {experienceData.map((exp) => (
+        <div
+          key={exp.id}
+          className={`exp-card ${openId === exp.id ? 'open' : ''}`}
+          onClick={() => toggleOpen(exp.id)}
+        >
+          <div className="exp-header">
+            <div className="exp-info">
+              <img src={exp.logo} alt={exp.company} className="exp-logo" />
+              <div className="exp-text">
+                <h3>{exp.company}</h3>
+                <p>{exp.position}</p>
+              </div>
+            </div>
+            <div className={`exp-arrow ${openId === exp.id ? 'rotate' : ''}`}>
+              ▼
+            </div>
+          </div>
+          <div className="exp-details">
+            {exp.description}
           </div>
         </div>
-        <div className="exp-details">
-          <p>{exp.description}</p>
-        </div>
-      </div>
+      ))}
     </section>
   );
-}
+};
+
+export default Experience;
