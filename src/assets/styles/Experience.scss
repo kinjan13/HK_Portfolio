@@ -16,7 +16,6 @@
     background: #1e2228;
     border-radius: 12px;
     overflow: hidden;
-    cursor: pointer;
     width: 80%;
     max-width: 800px;
     margin: 1rem 0;
@@ -33,6 +32,11 @@
       align-items: center;
       padding: 1rem 1.2rem;
       background: #272c34;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      text-align: left;
 
       .exp-info {
         display: flex;
@@ -63,7 +67,7 @@
         }
       }
 
-      .exp-arrow {
+      .toggle-icon {
         font-size: 1.2rem;
         transition: transform 0.3s ease;
 
@@ -74,23 +78,18 @@
     }
 
     .exp-details {
-      max-height: 0;
-      opacity: 0;
-      padding: 0 1.2rem;
-      overflow: hidden;
-      transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
-
-      .open & {
-        max-height: 200px; // adjust based on content length
-        opacity: 1;
-        padding: 1rem 1.2rem;
-      }
+      padding: 1rem 1.2rem;
+      line-height: 1.6;
+      background-color: #1e2228;
+      color: #e6e6e6;
     }
 
-    &.open .exp-details {
-      max-height: 200px;
-      opacity: 1;
-      padding: 1rem 1.2rem;
+    &.open {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      
+      .toggle-icon {
+        transform: rotate(180deg);
+      }
     }
   }
 }

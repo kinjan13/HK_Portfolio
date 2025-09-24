@@ -37,7 +37,7 @@ function Timeline() {
   return (
     <div id="history" ref={timelineRef}>
       <div className="items-container">
-        <h1>History</h1>
+        <h1>Education</h1>
         <VerticalTimeline>
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
